@@ -1,7 +1,14 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "flask-debugtoolbar"
-version = "0.4"
+version = "0.5"
 dependencies = [
     "flask",
     "requests"
 ]
+
+[tool.setuptools]
+py-modules = ["flask_debugtoolbar"]
